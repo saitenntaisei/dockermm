@@ -1,0 +1,36 @@
+{
+    "version": "0.2.0",
+    // "configurations": [
+    //     {
+    //         "name": "Cortex Debug",
+    //         "cwd": "${workspaceRoot}",
+    //         "executable": "./build/pwmRe.elf",
+    //         "request": "launch",
+    //         "preLaunchTask": "Build project",
+    //         "type": "cortex-debug",
+    //         "servertype": "external",
+    //         "configFiles": [
+    //             "board/st_nucleo_f4.cfg"
+    //         ],
+    //         "gdbTarget": " host.docker.internal:3333",
+    //     }
+    // ]{
+    "configurations": [
+        {
+            "name": "OpenOCD Debug",
+            "type": "gdb",
+            "request": "attach",
+            "executable": "${ターゲットELFまでのPATH}",
+            "remote": true,
+            "target": ":3333",
+            "cwd": "${workspaceRoot}",
+            "gdbpath": "arm-none-eabi-gdb",
+            "autorun": [
+                "interrupt",
+                "monitor reset halt",
+                "load",
+            ],
+        }
+    ]
+}
+
